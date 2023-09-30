@@ -1,10 +1,8 @@
 package com.wtdpre.backend.model;
 
-import com.wtdpre.backend.model.dto.JopPostAddReq;
 import com.wtdpre.backend.model.timeEntity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Columns;
 
 @Getter
 @Setter
