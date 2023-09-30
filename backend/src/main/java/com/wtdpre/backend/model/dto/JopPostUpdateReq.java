@@ -14,4 +14,6 @@ public class JopPostUpdateReq {
     private Long reward;
     private String techStack;
     private String content;
+
+
 }
