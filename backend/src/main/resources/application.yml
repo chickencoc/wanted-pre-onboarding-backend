@@ -4,15 +4,25 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: test
     password: test1234
+
   jpa:
     show-sql: true
+    defer-datasource-initialization: true  # 데이터베이스 연결을 초기화하는 것을 미루고 애플리케이션 구동 중에 필요한 시점에서 연결을 수행한다.
     properties:
       hibernate:
         format_sql: true  # sql문 pretty하게 보여줌
         use_sql_comments: true
-    generate-ddl: false   # true, false
+    generate-ddl: true   # true, false
     hibernate:
-      ddl-auto: none    # create(처음생성시,테스트), create-drop, update(db가 확정되었을 때,수정단계일때), validate, none(최종)
+      ddl-auto: create  # create(처음생성시,테스트), create-drop, update(db가 확정되었을 때,수정단계일때), validate, none(최종)
+
+  sql:
+    init:
+      mode: always
+      # always: embeded db가 아닌 외부 db 사용시 spring boot를 실행할때 마다 data.sql schema.sql import.sql을 항상 실행
+      # never: data.sql schema.sql import.sql을 실행하지 않음
+      encoding: utf-8
+
   devtools:
-    livereload:
+    restart:
       enabled: true
