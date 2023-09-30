@@ -1,14 +1,11 @@
 package com.wtdpre.backend.model.dto;
 
-import lombok.AllArgsConstructor;
+import com.wtdpre.backend.model.JopPost;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class JopPostDetailRes {
 
     private Long jopPostNo;
@@ -22,4 +19,18 @@ public class JopPostDetailRes {
     private String companyCity;
 
     private List<Long> jopPostNoList;
+
+    public JopPostDetailRes(JopPost jopPost, List<Long> jopPostNoList) {
+        this.jopPostNo = jopPost.getNo();
+        this.position = jopPost.getPosition();
+        this.reward = jopPost.getReward();
+        this.techStack = jopPost.getTechStack();
+        this.content = jopPost.getContent();
+
+        this.companyName = jopPost.getCompany().getName();
+        this.companyCountry = jopPost.getCompany().getCountry();
+        this.companyCity = jopPost.getCompany().getCity();
+
+        this.jopPostNoList = jopPostNoList;
+    }
 }

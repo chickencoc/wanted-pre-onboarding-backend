@@ -1,5 +1,7 @@
 package com.wtdpre.backend.model;
 
+import com.wtdpre.backend.model.dto.JopPostAddReq;
+import com.wtdpre.backend.model.dto.JopPostUpdateReq;
 import com.wtdpre.backend.model.timeEntity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,6 +29,29 @@ public class JopPost extends BaseTimeEntity {
 
     @Column(columnDefinition = "text comment '채용내용'", nullable = false)
     private String content;
+
+    @ManyToOne
+    @JoinColumn(name = "company_no")
+    private Company company;
+
+
+    public static JopPost toEntity(JopPostAddReq req, Company co) {
+        return JopPost.builder()
+                .position(req.getPosition())
+                .reward(req.getReward())
+                .techStack(req.getTechStack())
+                .content(req.getContent())
+                .company(co)
+                .build();
+
+    }
+
+    public void update(JopPostUpdateReq req) {
+        this.position = req.getPosition();
+        this.reward = req.getReward();
+        this.techStack = req.getTechStack();
+        this.content = req.getContent();
+    }
 
 }
 
