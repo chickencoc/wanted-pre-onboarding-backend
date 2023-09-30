@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class AppliesReq {
 
     private Long jopPostNo;
-    private Long MemberNo;
+    private Long memberNo;
 }
